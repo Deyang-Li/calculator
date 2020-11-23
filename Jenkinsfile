@@ -24,5 +24,22 @@ pipeline {
 				sh "./gradlew jacocoTestCoverageVerification"
 			}
 		}
+		stage("Static code analysis") {
+			steps {
+				sh "./gradlew checkstyleMain"
+				publishHTML (target: [
+     				reportDir: 'build/reports/checkstyle/',
+     				reportFiles: 'main.html',
+     				reportName: "Checkstyle Report"
+				])
+			}
+		}
+	}
+	post {
+		always {
+        	mail to: 'superthronegame@gamil.com',
+          	subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
+        	body: "Your build completed, please check: ${env.BUILD_URL}"
+     	}
 	}
 }
