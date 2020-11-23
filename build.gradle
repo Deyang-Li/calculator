@@ -4,6 +4,7 @@ plugins {
 	id 'java'
 }
 apply plugin: 'io.spring.dependency-management'
+apply plugin: "jacoco"
 
 group = 'com.deyangli'
 version = '0.0.1-SNAPSHOT'
@@ -20,4 +21,14 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.2
+			}
+		}
+	}
 }
