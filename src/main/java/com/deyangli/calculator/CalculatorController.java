@@ -5,8 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Spring Web Controller
+ * @author Deyang Li
+ *
+ */
 @RestController
-class CalculatorController {
+public class CalculatorController {
   @Autowired private Calculator calculator;
 
   @RequestMapping("/sum")

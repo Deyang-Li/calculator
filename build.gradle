@@ -5,6 +5,7 @@ plugins {
 }
 apply plugin: 'io.spring.dependency-management'
 apply plugin: "jacoco"
+apply plugin: 'checkstyle'
 
 group = 'com.deyangli'
 version = '0.0.1-SNAPSHOT'
@@ -31,4 +32,9 @@ jacocoTestCoverageVerification {
 			}
 		}
 	}
+}
+
+checkstyle {
+	toolVersion "7.6.1"
+	checkstyleTest.enabled = false
 }
