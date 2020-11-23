@@ -37,7 +37,7 @@ pipeline {
 	}
 	post {
 		always {
-        	mail to: 'superthronegame@gmail.com',
+        	mail to: 'steven@gl8bl.com',
           	subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
         	body: "Your build completed, please check: ${env.BUILD_URL}"
      	}
