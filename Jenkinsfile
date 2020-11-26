@@ -46,6 +46,7 @@ pipeline {
 		}
 		stage("Docker push") {
      		steps {
+     			sh 'docker login -u="deyangli" -p=$(eval echo "MTIzNDU2YXNkRg==" | base64 --decode)'
           		sh "docker push deyangli/calculator"
      		}
 		}
