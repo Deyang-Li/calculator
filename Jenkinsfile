@@ -55,9 +55,16 @@ pipeline {
           		sh "docker run -d --rm -p 8765:8080 --name calculator deyangli/calculator"
      		}
 		}
+		stage("Acceptance test") {
+     		steps {
+          		sleep 60
+          		sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
+     		}
+		}
 	}
 	post {
 		always {
+			sh "docker stop calculator"
         	mail to: 'steven@gl8bl.com',
           	subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
         	body: "Your build completed, please check: ${env.BUILD_URL}"
